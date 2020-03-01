@@ -26,4 +26,9 @@ hs_err_pid*
 .idea/
 .vscode/
 .gradle/
+
+# build and run artifacts
+build/
+
+# Docker setup for report portal
 data/
