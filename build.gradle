@@ -13,17 +13,24 @@ repositories {
     mavenCentral()
 }
 
+tasks.withType(Test) {
+    systemProperties = [
+            tag: System.getProperty('tag', 'fail')
+    ]
+}
+
 task runTests(type: Test) {
     useTestNG {
         testLogging.showStandardStreams = true
         useDefaultListeners = false
         listeners << 'com.epam.reportportal.testng.ReportPortalTestNGListener'
+        includeGroups System.getProperty('tag', 'NONE')
     }
 }
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
-    compile group: 'com.epam.reportportal', name: 'agent-java-testng', version: '5.0.4'
+    compile group: 'com.epam.reportportal', name: 'agent-java-testng', version: '5.0.6'
     testCompile group: 'org.testng', name: 'testng', version: '7.1.0'
 }
 
