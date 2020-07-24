@@ -32,3 +32,4 @@ build/
 
 # Docker setup for report portal
 data/
+out/

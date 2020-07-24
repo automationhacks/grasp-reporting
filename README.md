@@ -4,3 +4,7 @@ This repo is a place to experiment with different reporting and logging framewor
 
 ## Report portal
 
+## References
+
+- [Read this article from Baeldung on logback](https://www.baeldung.com/logback)
+- [README on logger-java-logback integration](https://github.com/reportportal/logger-java-logback)
