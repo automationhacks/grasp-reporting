@@ -1,6 +1,7 @@
 package logback
 
 import TestGroups
+import ch.qos.logback.classic.Level
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.testng.Assert
@@ -39,5 +40,20 @@ class LogbackTests {
         logger.info("This is just an info")
         logger.warn("Something bad happened")
         logger.error("Something catastropic happened")
+    }
+
+    @Test
+    fun testLogbackHierarchy() {
+        // TRACE > DEBUG > INFO > WARN > ERROR
+        val parentLogger : ch.qos.logback.classic.Logger = LoggerFactory.getLogger("io.automationhacks.logback") as ch.qos.logback.classic.Logger
+        // Setting parent loggers level as INFO, i.e. anything less than INFO would
+        // not be logged
+        parentLogger.level = Level.INFO
+        val childLogger = LoggerFactory.getLogger("io.automationhacks.logback.tests") as ch.qos.logback.classic.Logger
+
+        parentLogger.warn("This message is logged since WARN > INFO")
+        parentLogger.debug("This message is not logged since DEBUG < INFO")
+        childLogger.info("INFO == INFO")
+        childLogger.debug("DEBUG < INFO")
     }
 }

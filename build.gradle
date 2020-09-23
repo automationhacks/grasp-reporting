@@ -43,12 +43,15 @@ task runTestsInParallel(type: Test) {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    // for reporting via report portal
     compile group: 'com.epam.reportportal', name: 'agent-java-testng', version: '5.0.7'
     compile group: 'com.epam.reportportal', name: 'logger-java-logback', version: '5.0.3'
+    // for reporting via Extent reporting
+    compile group: 'com.relevantcodes', name: 'extentreports', version: '2.41.2'
+    // logback
     compile group: 'ch.qos.logback', name: 'logback-core', version: '1.2.3'
     compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.30'
     testCompile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
-    compile group: 'com.relevantcodes', name: 'extentreports', version: '2.41.2'
     compile group: 'org.testng', name: 'testng', version: '7.1.0'
 }
 
