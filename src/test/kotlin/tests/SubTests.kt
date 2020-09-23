@@ -15,6 +15,8 @@ class SubTests {
 
     @Test(groups=[TestGroups.SHOULD_PASS])
     fun subAnotherTwoNumbers() {
+        Logging.log("Starting another sub test")
+        Logging.log("Test sub for another two functions")
         Assert.assertEquals(2 - 5, -3)
     }
 

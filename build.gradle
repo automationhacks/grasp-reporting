@@ -29,6 +29,18 @@ task runTests(type: Test) {
     }
 }
 
+task runTestsInParallel(type: Test) {
+    useTestNG {
+        testLogging.showStandardStreams = true
+        useDefaultListeners = false
+        parallel = "classes"
+        threadCount = 4
+        listeners << 'com.epam.reportportal.testng.ReportPortalTestNGListener'
+        listeners << 'listeners.ExtentReporterNG'
+        includeGroups System.getProperty('tag', 'NONE')
+    }
+}
+
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
     compile group: 'com.epam.reportportal', name: 'agent-java-testng', version: '5.0.7'
